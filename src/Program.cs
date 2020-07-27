@@ -7,6 +7,8 @@ namespace Trestlebridge
 {
     class Program
     {
+
+        // method that displays the danner when the program runs
         static void DisplayBanner()
         {
             Utils.Clear();
@@ -22,14 +24,25 @@ namespace Trestlebridge
 
         static void Main(string[] args)
         {
+
+
+             //color of the application
+             //such an eyesore
+             //who the hell though this was a good idea???
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
 
+
+            //instance of a new farm type
             Farm Trestlebridge = new Farm();
 
+
+            //main menu
             while (true)
             {
                 DisplayBanner();
+
+                //list of options
                 Console.WriteLine("1. Create Facility");
                 Console.WriteLine("2. Purchase Animals");
                 Console.WriteLine("3. Purchase Seeds");
