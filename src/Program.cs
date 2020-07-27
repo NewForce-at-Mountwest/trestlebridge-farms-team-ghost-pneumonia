@@ -54,6 +54,7 @@ namespace Trestlebridge
                 else if (option == "4")
                 {
                     DisplayBanner();
+                    //Calls the ToString() function in Farm.cs. This sets off a cascade of calling multiple ToString() functions
                     Console.WriteLine(Trestlebridge);
                     Console.WriteLine("\n\n\n");
                     Console.WriteLine("Press return key to go back to main menu.");

@@ -8,6 +8,7 @@ namespace Trestlebridge.Models.Animals {
         private Guid _id = Guid.NewGuid();
         private double _meatProduced = 18.25;
 
+        //ShortId is a version of the _id that only shows the first few characters. It's used a lot in ToString() functions
         private string _shortId {
             get {
                 return this._id.ToString().Substring(this._id.ToString().Length - 6);
@@ -26,6 +27,7 @@ namespace Trestlebridge.Models.Animals {
             return _meatProduced;
         }
 
+        //Called by other ToString() functions, returns a string including the cow's shortId
         public override string ToString () {
             return $"Cow {this._shortId}. Mooo!";
         }
