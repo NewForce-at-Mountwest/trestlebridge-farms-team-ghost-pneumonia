@@ -34,10 +34,13 @@ namespace Trestlebridge.Models
 
         public override string ToString()
         {
+            //Creates a new string
             StringBuilder report = new StringBuilder();
 
+            //Goes through every GrazingField in the part and calls its ToString() function, adding it to the report string
             GrazingFields.ForEach(gf => report.Append(gf));
 
+            //Returns the report string
             return report.ToString();
         }
     }

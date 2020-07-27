@@ -11,6 +11,7 @@ namespace Trestlebridge.Models.Animals {
         //Each cow produces 18.25kg of meat
         private double _meatProduced = 18.25;
 
+        //ShortId is a version of the _id that only shows the first few characters. It's used a lot in ToString() functions
         private string _shortId {
             get {
                 return this._id.ToString().Substring(this._id.ToString().Length - 6);
