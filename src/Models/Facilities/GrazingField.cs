@@ -27,14 +27,14 @@ namespace Trestlebridge.Models.Facilities {
         public void AddResource (IGrazing animal)
         {
             // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.Add(animal);
         }
 
         //Adds a whole list of grazing animals to the field
         public void AddResource (List<IGrazing> animals) 
         {
             // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.AddRange(animals);
         }
 
         //Outputs a large string of all resources stored in this grazing field
