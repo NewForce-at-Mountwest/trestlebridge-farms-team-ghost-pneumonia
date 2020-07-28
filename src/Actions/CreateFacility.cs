@@ -20,9 +20,14 @@ namespace Trestlebridge.Actions
 
             Console.Write("> ");
             string input = Console.ReadLine();
-
+        //     bool userBool = false;
+        //    while( userBool){
+               
+        //    }
+        
             switch (Int32.Parse(input))
             {
+                
                 case 1:
                     farm.AddGrazingField(new GrazingField());
                     Console.WriteLine("Your Facility has been added");
