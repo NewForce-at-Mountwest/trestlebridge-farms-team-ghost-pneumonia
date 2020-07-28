@@ -11,11 +11,16 @@ namespace Trestlebridge.Actions
         public static void CollectInput(Farm farm, Duck animal)
         {
             Boolean choiceBoolean = true;
+            Boolean placeBoolean = true;
             Utils.Clear();
 
             for (int i = 0; i < farm.DuckHouses.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].AnimalCount} animals)");
+                if (i == 0)
+                {
+                    Console.WriteLine("0. Return to main menu");
+                }
+                Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].AnimalCount} animals, out of {farm.DuckHouses[i].Capacity})");
             }
 
             Console.WriteLine();
@@ -37,7 +42,12 @@ namespace Trestlebridge.Actions
                 {
                     Console.WriteLine("No number detected");
                 }
-                if (choice < 1 || choice > farm.DuckHouses.Count)
+                if (choice == 0)
+                {
+                    choiceBoolean = false;
+                    placeBoolean = false;
+                }
+                else if (choice < 1 || choice > farm.DuckHouses.Count)
                 {
                     Console.WriteLine("Please input a number corresponding to a choice");
                 }
@@ -51,9 +61,12 @@ namespace Trestlebridge.Actions
                 }
             }
 
-            farm.DuckHouses[choice - 1].AddResource(animal);
-            Console.WriteLine("Duck successfully added to the house! Press enter to return to the main menu.");
-            Console.ReadLine();
+            if (placeBoolean)
+            {
+                farm.DuckHouses[choice - 1].AddResource(animal);
+                Console.WriteLine("Duck successfully added to the house! Press enter to return to the main menu.");
+                Console.ReadLine();
+            }
 
             /*
                 Couldn't get this to work. Can you?
