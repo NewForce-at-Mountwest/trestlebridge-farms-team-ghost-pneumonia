@@ -6,10 +6,10 @@ using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Facilities {
     //Implements the Facility interface, and this is a facility with a type of IGrazing
-    public class GrazingField : IFacility<IGrazing>
+    public class ChickenHouse : IFacility<IGrazing>
     {
         //Stores an int for how many resources this facility can hold (50 grazing animals in this case)
-        private int _capacity = 50;
+        private int _capacity = 15;
         //Creates a unique id for this grazing field
         private Guid _id = Guid.NewGuid();
 
@@ -46,7 +46,7 @@ namespace Trestlebridge.Models.Facilities {
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
             //Adds to our output string
-            output.Append($"Grazing field {shortId} has {this._animals.Count} animals\n");
+            output.Append($"Chicken House {shortId} has {this._animals.Count} animals\n");
             //Calls the ToString() method for every animal in this grazing field and adds it to our output string
             this._animals.ForEach(a => output.Append($"   {a}\n"));
 
