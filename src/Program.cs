@@ -36,7 +36,6 @@ namespace Trestlebridge
             //instance of a new farm type
             Farm Trestlebridge = new Farm();
 
-
             //main menu
             while (true)
             {
