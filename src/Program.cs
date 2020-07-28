@@ -26,9 +26,9 @@ namespace Trestlebridge
         {
 
 
-             //color of the application
-             //such an eyesore
-             //who the hell though this was a good idea???
+            //color of the application
+            //such an eyesore
+            //who the hell though this was a good idea???
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
 
@@ -47,7 +47,8 @@ namespace Trestlebridge
                 Console.WriteLine("2. Purchase Animals");
                 Console.WriteLine("3. Purchase Seeds");
                 Console.WriteLine("4. Display Farm Status");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Processing Options");
+                Console.WriteLine("6. Exit");
                 Console.WriteLine();
 
                 Console.WriteLine("Choose a FARMS option");
@@ -74,6 +75,11 @@ namespace Trestlebridge
                     Console.ReadLine();
                 }
                 else if (option == "5")
+                {
+                    DisplayBanner();
+                    ProcessingOptions.CollectInput();
+                }
+                else if (option == "6")
                 {
                     Console.WriteLine("Today is a great day for farming");
                     break;

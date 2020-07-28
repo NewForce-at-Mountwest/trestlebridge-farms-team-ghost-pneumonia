@@ -20,37 +20,45 @@ namespace Trestlebridge.Actions
 
             Console.Write("> ");
             string input = Console.ReadLine();
-        //     bool userBool = false;
-        //    while( userBool){
-               
-        //    }
-        
-            switch (Int32.Parse(input))
+
+
+            if (input == "1")
             {
-                
-                case 1:
-                    farm.AddGrazingField(new GrazingField());
-                    Console.WriteLine("Your Facility has been added");
-                    break;
-                case 2:
-                    farm.AddPlowedField(new PlowedField());
-                    Console.WriteLine("Your Facility has been added");
-                    break;
-                case 3:
-                    farm.AddNaturalField(new NaturalField());
-                    Console.WriteLine("Your Facility has been added");
-                    break;
-                case 4:
-                    farm.AddChickenHouse(new ChickenHouse());
-                    Console.WriteLine("Your Facility has been added");
-                    break;
-                case 5:
-                    farm.AddDuckHouse(new DuckHouse());
-                    Console.WriteLine("Your Facility has been added");
-                    break;
-                default:
-                    break;
+                farm.AddGrazingField(new GrazingField());
+                Console.WriteLine("Your Facility has been added");
+
             }
+            else if (input == "2")
+            {
+                farm.AddPlowedField(new PlowedField());
+                Console.WriteLine("Your Facility has been added");
+
+            }
+            else if (input == "3")
+            {
+                farm.AddNaturalField(new NaturalField());
+                Console.WriteLine("Your Facility has been added");
+
+            }
+            else if (input == "4")
+            {
+                farm.AddChickenHouse(new ChickenHouse());
+                Console.WriteLine("Your Facility has been added");
+
+            }
+            else if (input == "5")
+            {
+                farm.AddDuckHouse(new DuckHouse());
+                Console.WriteLine("Your Facility has been added");
+
+            }
+            else
+            {
+                Console.WriteLine($"Invalid input: {input}");
+            }
+
         }
+
     }
 }
+
