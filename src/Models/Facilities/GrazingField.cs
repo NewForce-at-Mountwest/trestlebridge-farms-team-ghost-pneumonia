@@ -24,6 +24,13 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        //Added by Dylan so that I can count how many animals are in each facility
+        public int AnimalCount {
+            get {
+                return _animals.Count;
+            }
+        }
+
         //Adds a single grazing animal to the field
         public void AddResource (IGrazing animal)
         {
