@@ -11,9 +11,9 @@ namespace Trestlebridge.Actions
         public static void CollectInput(Farm farm)
         {
             Boolean choiceBoolean = true;
-            int choice = 1;
+            int choice = -1;
 
-
+            Console.WriteLine("0. Back to main menu");
             Console.WriteLine("1. Cow");
             Console.WriteLine("2. Pig");
             Console.WriteLine("3. Chicken");
@@ -37,7 +37,7 @@ namespace Trestlebridge.Actions
                 {
                     Console.WriteLine("No number detected");
                 }
-                if (choice < 1 || choice > 7)
+                if (choice < 0 || choice > 7)
                 {
                     Console.WriteLine("Please input a number corresponding to a choice");
                 }
@@ -48,6 +48,8 @@ namespace Trestlebridge.Actions
             }
             switch (choice)
             {
+                case 0:
+                    break;
                 case 1:
                     ChooseGrazingField.CollectInput(farm, new Cow());
                     break;

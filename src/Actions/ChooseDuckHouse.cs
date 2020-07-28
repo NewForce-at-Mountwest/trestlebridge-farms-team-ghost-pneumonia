@@ -14,6 +14,10 @@ namespace Trestlebridge.Actions
             Boolean placeBoolean = true;
             Utils.Clear();
 
+            if(farm.DuckHouses.Count == 0){
+                    Console.WriteLine("0. Return to main menu");
+            }
+
             for (int i = 0; i < farm.DuckHouses.Count; i++)
             {
                 if (i == 0)
