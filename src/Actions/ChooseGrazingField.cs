@@ -12,12 +12,13 @@ namespace Trestlebridge.Actions
         {
             Boolean choiceBoolean = true;
             Boolean placeBoolean = true;
+            IResource animalResource = (IResource) animal;
             Utils.Clear();
 
             if(farm.GrazingFields.Count == 0){
                     Console.WriteLine("0. Return to main menu");
             }
-            
+
             for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
                 if(i == 0){
@@ -29,7 +30,7 @@ namespace Trestlebridge.Actions
             Console.WriteLine();
 
             // How can I output the type of animal chosen here?
-            Console.WriteLine($"Place the {animal.Type} where?");
+            Console.WriteLine($"Place the {animalResource.Type} where?");
 
             int choice = -1;
 
@@ -66,7 +67,7 @@ namespace Trestlebridge.Actions
             if (placeBoolean)
             {
                 farm.GrazingFields[choice - 1].AddResource(animal);
-                Console.WriteLine($"{animal.Type} successfully added to the field! Press enter to return to the main menu.");
+                Console.WriteLine($"{animalResource.Type} successfully added to the field! Press enter to return to the main menu.");
                 Console.ReadLine();
             }
 

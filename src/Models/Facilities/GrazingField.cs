@@ -60,8 +60,6 @@ namespace Trestlebridge.Models.Facilities {
 
             //Returns our output string
             return output.ToString();
-
-            
         }
     }
 }
