@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
+using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions
 {
@@ -14,17 +16,19 @@ namespace Trestlebridge.Actions
             Boolean placeBoolean = true;
             Utils.Clear();
 
-            if(farm.DuckHouses.Count == 0){
+            List<DuckHouse> availableHouses = farm.DuckHouses.Where(singleHouse => singleHouse.AnimalCount < singleHouse.Capacity).ToList(); 
+
+            if(availableHouses.Count == 0){
                     Console.WriteLine("0. Return to main menu");
             }
 
-            for (int i = 0; i < farm.DuckHouses.Count; i++)
+            for (int i = 0; i < availableHouses.Count; i++)
             {
                 if (i == 0)
                 {
                     Console.WriteLine("0. Return to main menu");
                 }
-                Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].AnimalCount} animals, out of {farm.DuckHouses[i].Capacity})");
+                Console.WriteLine($"{i + 1}. Duck House ({availableHouses[i].AnimalCount} animals, out of {availableHouses[i].Capacity})");
             }
 
             Console.WriteLine();
@@ -51,11 +55,11 @@ namespace Trestlebridge.Actions
                     choiceBoolean = false;
                     placeBoolean = false;
                 }
-                else if (choice < 1 || choice > farm.DuckHouses.Count)
+                else if (choice < 1 || choice > availableHouses.Count)
                 {
                     Console.WriteLine("Please input a number corresponding to a choice");
                 }
-                else if (farm.DuckHouses[choice - 1].AnimalCount >= farm.DuckHouses[choice - 1].Capacity)
+                else if (availableHouses[choice - 1].AnimalCount >= availableHouses[choice - 1].Capacity)
                 {
                     Console.WriteLine("This house is full, please choose another!");
                 }
@@ -67,7 +71,7 @@ namespace Trestlebridge.Actions
 
             if (placeBoolean)
             {
-                farm.DuckHouses[choice - 1].AddResource(animal);
+                availableHouses[choice - 1].AddResource(animal);
                 Console.WriteLine("Duck successfully added to the house! Press enter to return to the main menu.");
                 Console.ReadLine();
             }

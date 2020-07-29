@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
+using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions
 {
@@ -15,16 +17,18 @@ namespace Trestlebridge.Actions
             IResource animalResource = (IResource) animal;
             Utils.Clear();
 
-            if(farm.GrazingFields.Count == 0){
+            List<GrazingField> availableFields = farm.GrazingFields.Where(singleField => singleField.AnimalCount < singleField.Capacity).ToList(); 
+
+            if(availableFields.Count == 0){
                     Console.WriteLine("0. Return to main menu");
             }
 
-            for (int i = 0; i < farm.GrazingFields.Count; i++)
+            for (int i = 0; i < availableFields.Count; i++)
             {
                 if(i == 0){
                     Console.WriteLine("0. Return to main menu");
                 }
-                Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].AnimalCount} animals, out of {farm.GrazingFields[i].Capacity})");
+                Console.WriteLine($"{i + 1}. Grazing Field ({availableFields[i].AnimalCount} animals, out of {availableFields[i].Capacity})");
             }
 
             Console.WriteLine();
@@ -50,11 +54,11 @@ namespace Trestlebridge.Actions
                     choiceBoolean = false;
                     placeBoolean = false;
                 }
-                else if (choice < 1 || choice > farm.GrazingFields.Count)
+                else if (choice < 1 || choice > availableFields.Count)
                 {
                     Console.WriteLine("Please input a number corresponding to a choice");
                 }
-                else if (farm.GrazingFields[choice - 1].AnimalCount >= farm.GrazingFields[choice - 1].Capacity)
+                else if (availableFields[choice - 1].AnimalCount >= availableFields[choice - 1].Capacity)
                 {
                         Console.WriteLine("This field is full, please choose another!");
                 }
@@ -66,7 +70,7 @@ namespace Trestlebridge.Actions
 
             if (placeBoolean)
             {
-                farm.GrazingFields[choice - 1].AddResource(animal);
+                availableFields[choice - 1].AddResource(animal);
                 Console.WriteLine($"{animalResource.Type} successfully added to the field! Press enter to return to the main menu.");
                 Console.ReadLine();
             }
