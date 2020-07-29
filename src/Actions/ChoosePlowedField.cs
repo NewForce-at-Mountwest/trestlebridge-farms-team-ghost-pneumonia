@@ -14,12 +14,12 @@ namespace Trestlebridge.Actions
         {
             Utils.Clear();
 
+
             List<PlowedField> openPlowedFields = farm.PlowedFields.Where(field => field.PlantsCount() < field.Capacity).ToList();
 
-            if (farm.PlowedFields.Count == 0)
-            {
-                Console.WriteLine("0. Return to main menu");
-            }
+         
+                Console.WriteLine("0. Return to Main Menu");
+           
 
             for (int i = 0; i < openPlowedFields.Count; i++)
             {
@@ -29,22 +29,41 @@ namespace Trestlebridge.Actions
 
             Console.WriteLine();
 
-            // How can I output the type of animal chosen here?
+            // How can I output the type of plant chosen here?
             Console.WriteLine($"Place the plant where?");
+            
 
             Console.Write("> ");
-            try
-            {
-                int choice = Int32.Parse(Console.ReadLine());
-                openPlowedFields[choice - 1].AddResource(plant);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Incorrect input.  Returning to main menu!");
-                Thread.Sleep(3000);
-            }
 
-            
+            //Checks that the correct input was entered.
+            while (true)
+            {
+                try
+                {
+                    int choice = Int32.Parse(Console.ReadLine());
+                    if (choice >= 1 && choice <= openPlowedFields.Count)
+                    {
+                        openPlowedFields[choice - 1].AddResource(plant);
+                        Console.WriteLine("The plant was successfully added to the plowed field.");
+                        Thread.Sleep(2000);
+                        break;
+                    }
+                    else if(choice == 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect input.  Please try again.");
+                        Console.Write("> ");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Incorrect input.  Please try again.");
+                    Console.Write("> ");
+                }
+            }
 
             /*
                 Couldn't get this to work. Can you?

@@ -15,14 +15,12 @@ namespace Trestlebridge.Actions
         {
             Utils.Clear();
 
+            //Lists that filter out any plowed fields or natural fields that are at capacity.
             List<PlowedField> openPlowedFields = farm.PlowedFields.Where(field => field.PlantsCount() < field.Capacity).ToList();
             List<NaturalField> openNaturalFields = farm.NaturalFields.Where(field => field.PlantsCount() < field.Capacity).ToList();
 
-            if (openPlowedFields.Count + openNaturalFields.Count == 0)
-            {
-                Console.WriteLine("0. Return to main menu");
-            }
-
+            //Prints the lists of open fields
+            Console.WriteLine("0. Return to main menu");
             for (int i = 0; i < openPlowedFields.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. Plowed Field  (Plants: {openPlowedFields[i].PlantsCount()})");
@@ -48,14 +46,20 @@ namespace Trestlebridge.Actions
                     if (choice >= 1 && choice <= openPlowedFields.Count)
                     {
                         openPlowedFields[choice - 1].AddResource(plant);
+                        Console.WriteLine("The plant was successfully added to the plowed field.");
+                        Thread.Sleep(2000);
                         break;
 
                     }
                     else if (choice > openPlowedFields.Count && choice <= openPlowedFields.Count + openNaturalFields.Count)
                     {
                         openNaturalFields[choice - 1 - openPlowedFields.Count].AddResource(plant);
+                          Console.WriteLine("The plant was successfully added to the natural field.");
+                        Thread.Sleep(2000);
                         break;
-
+                    }
+                    else if(choice == 0){
+                        break;
                     }
                     else
                     {
