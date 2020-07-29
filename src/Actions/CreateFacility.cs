@@ -22,7 +22,9 @@ namespace Trestlebridge.Actions
             Console.Write("> ");
             string input = Console.ReadLine();
 
-
+          //menu for creating facilities
+          //changed it from the code that was given 
+          //now it looks and functions just like the main menu
             if (input == "1")
             {
                 farm.AddGrazingField(new GrazingField());
@@ -53,6 +55,7 @@ namespace Trestlebridge.Actions
                 Console.WriteLine("Your Facility has been added");
 
             }
+            //error handling
             else
             {
                 Console.WriteLine($"Invalid input: {input}");

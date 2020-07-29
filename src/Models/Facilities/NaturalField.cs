@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Facilities {
-    //Implements the Facility interface, and this is a facility with a type of IGrazing
+    //Implements the Facility interface, and this is a facility with a type of ISeedProducing
     public class NaturalField : IFacility<ISeedProducing>
     {
-             //Stores an int for how many resources this facility can hold (65 PLANTS)
+             //Stores an int for how many resources this facility can hold (60 PLANTS)
         private int _capacity = 60;
         //Creates a unique id 
         private Guid _id = Guid.NewGuid();
@@ -39,7 +39,7 @@ namespace Trestlebridge.Models.Facilities {
 
             //Adds to our output string
             output.Append($"Natural field {shortId} has {this._plants.Count} plants\n");
-            //Calls the ToString() method for every animal in this grazing field and adds it to our output string
+            //Calls the ToString() method for every plant in this natural field and adds it to our output string
             this._plants.ForEach(a => output.Append($"   {a}\n"));
 
             //Returns our output string

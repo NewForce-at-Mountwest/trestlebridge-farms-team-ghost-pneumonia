@@ -44,6 +44,8 @@ namespace Trestlebridge
                 DisplayBanner();
 
                 //list of options
+                //added the option for processing options menu on option 5
+                //changed exit to option 6
                 Console.WriteLine("1. Create Facility");
                 Console.WriteLine("2. Purchase Animals");
                 Console.WriteLine("3. Purchase Seeds");
@@ -74,9 +76,12 @@ namespace Trestlebridge
                     Console.WriteLine("Press return key to go back to main menu.");
                     Console.ReadLine();
                 }
+                //this will bring you to the processing options menu
                 else if (option == "5")
                 {
+                    //calls the display banner method
                     DisplayBanner();
+                    //calls the collect input method from ProcessingOptions.cs
                     ProcessingOptions.CollectInput();
                 }
                 else if (option == "6")
@@ -86,7 +91,9 @@ namespace Trestlebridge
                 }
                 else
                 {
+                    //this will tell you that whatever key you hit was invalid
                     Console.WriteLine($"Invalid option: {option}");
+                    //this pauses the error message 
                     Thread.Sleep(2000);
                 }
             }

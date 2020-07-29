@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Facilities;
@@ -9,6 +10,7 @@ namespace Trestlebridge.Actions
     {
         public static void CollectInput()
         {
+            //menu for processing resources
             Console.WriteLine("1. Seed Harvester");
             Console.WriteLine("2. Meat Processor");
             Console.WriteLine("3. Egg Gatherer");
@@ -47,7 +49,10 @@ namespace Trestlebridge.Actions
             }
             else
             {
+                //error handling
                 Console.WriteLine($"Invalid input: {input}");
+                Console.WriteLine("Returning to the main menu");
+                Thread.Sleep(2000);
             }
 
         }
