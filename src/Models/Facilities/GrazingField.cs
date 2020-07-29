@@ -9,7 +9,8 @@ namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing>
     {
         //Stores an int for how many resources this facility can hold (50 grazing animals in this case)
-        private int _capacity = 50;
+        //Changed from initial 50 (wrong capacity in starter code) to 20
+        private int _capacity = 20;
         //Creates a unique id for this grazing field
         private Guid _id = Guid.NewGuid();
 
@@ -23,18 +24,25 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        //Added by Dylan so that I can count how many animals are in each facility
+        public int AnimalCount {
+            get {
+                return _animals.Count;
+            }
+        }
+
         //Adds a single grazing animal to the field
         public void AddResource (IGrazing animal)
         {
             // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.Add(animal);
         }
 
         //Adds a whole list of grazing animals to the field
         public void AddResource (List<IGrazing> animals) 
         {
             // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.AddRange(animals);
         }
 
         //Outputs a large string of all resources stored in this grazing field

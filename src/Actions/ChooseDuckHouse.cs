@@ -6,32 +6,33 @@ using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Actions
 {
-    public class ChooseGrazingField
+    public class ChooseDuckHouse
     {
-        public static void CollectInput(Farm farm, IGrazing animal)
+        public static void CollectInput(Farm farm, Duck animal)
         {
             Boolean choiceBoolean = true;
             Boolean placeBoolean = true;
             Utils.Clear();
 
-            if(farm.GrazingFields.Count == 0){
+            if(farm.DuckHouses.Count == 0){
                     Console.WriteLine("0. Return to main menu");
             }
-            
-            for (int i = 0; i < farm.GrazingFields.Count; i++)
+
+            for (int i = 0; i < farm.DuckHouses.Count; i++)
             {
-                if(i == 0){
+                if (i == 0)
+                {
                     Console.WriteLine("0. Return to main menu");
                 }
-                Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].AnimalCount} animals, out of {farm.GrazingFields[i].Capacity})");
+                Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].AnimalCount} animals, out of {farm.DuckHouses[i].Capacity})");
             }
 
             Console.WriteLine();
 
             // How can I output the type of animal chosen here?
-            Console.WriteLine($"Place the {animal.Type} where?");
+            Console.WriteLine($"Place the animal where?");
 
-            int choice = -1;
+            int choice = 1;
 
             while (choiceBoolean)
             {
@@ -45,17 +46,18 @@ namespace Trestlebridge.Actions
                 {
                     Console.WriteLine("No number detected");
                 }
-                if (choice == 0){
+                if (choice == 0)
+                {
                     choiceBoolean = false;
                     placeBoolean = false;
                 }
-                else if (choice < 1 || choice > farm.GrazingFields.Count)
+                else if (choice < 1 || choice > farm.DuckHouses.Count)
                 {
                     Console.WriteLine("Please input a number corresponding to a choice");
                 }
-                else if (farm.GrazingFields[choice - 1].AnimalCount >= farm.GrazingFields[choice - 1].Capacity)
+                else if (farm.DuckHouses[choice - 1].AnimalCount >= farm.DuckHouses[choice - 1].Capacity)
                 {
-                        Console.WriteLine("This field is full, please choose another!");
+                    Console.WriteLine("This house is full, please choose another!");
                 }
                 else
                 {
@@ -65,8 +67,8 @@ namespace Trestlebridge.Actions
 
             if (placeBoolean)
             {
-                farm.GrazingFields[choice - 1].AddResource(animal);
-                Console.WriteLine($"{animal.Type} successfully added to the field! Press enter to return to the main menu.");
+                farm.DuckHouses[choice - 1].AddResource(animal);
+                Console.WriteLine("Duck successfully added to the house! Press enter to return to the main menu.");
                 Console.ReadLine();
             }
 
