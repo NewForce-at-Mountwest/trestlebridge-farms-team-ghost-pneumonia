@@ -2,11 +2,13 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Models.Animals;
 
 
 namespace Trestlebridge.Models.Facilities {
     //Implements the Facility interface, and this is a facility with a type of IGrazing
-    public class DuckHouse : IFacility<IGrazing>
+    //Dylan: Changed IGrazing to Duck, as Duck doesn't use the IGrazing interface
+    public class DuckHouse : IFacility<Duck>
     {
         //Stores an int for how many resources this facility can hold (12 grazing animals in this case)
         private int _capacity = 12;
@@ -14,7 +16,7 @@ namespace Trestlebridge.Models.Facilities {
         private Guid _id = Guid.NewGuid();
 
         //A list of grazing animals stored in this Duck house
-        private List<IGrazing> _animals = new List<IGrazing>();
+        private List<Duck> _animals = new List<Duck>();
 
         //Returns the field capacity. Allows _capacity to stay private but still use that number elsewhere
         public double Capacity {
@@ -23,18 +25,25 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        //Adds a single grazing animal to the Duck House
-        public void AddResource (IGrazing animal)
-        {
-            // TODO: implement this...
-            throw new NotImplementedException();
+        //Added by Dylan so that I can count how many animals are in each facility
+        public int AnimalCount {
+            get {
+                return _animals.Count;
+            }
         }
 
-        //Adds a whole list of grazing animals to the Duck House
-        public void AddResource (List<IGrazing> animals) 
+        //Adds a single grazing animal to the field
+        public void AddResource (Duck animal)
         {
             // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.Add(animal);
+        }
+
+        //Adds a whole list of grazing animals to the field
+        public void AddResource (List<Duck> animals) 
+        {
+            // TODO: implement this...
+            _animals.AddRange(animals);
         }
 
         //Outputs a large string of all resources stored in this Duck House

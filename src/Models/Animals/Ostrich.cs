@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Animals {
-    public class Ostrich : IResource, IGrazing, IMeatProducing {
+    public class Ostrich : IResource, IGrazing, IMeatProducing, IEggProducing {
 
         //Creates a unique id for each ostrich, which is sometimes printed as a shortId by the ToString() function
         private Guid _id = Guid.NewGuid();
         //A double for how much meat is produced when an ostrich is processed
         private double _meatProduced = 2.6;
+        private double _eggsProduced = 3;
 
         //ShortId is a version of the _id that only shows the first few characters. It's used a lot in ToString() functions
         private string _shortId {
@@ -36,6 +37,11 @@ namespace Trestlebridge.Models.Animals {
         //Called by other ToString() functions, returns a string including the ostrich's shortId
         public override string ToString () {
             return $"Ostrich {this._shortId}. Squack!";
+        }
+
+        public double GatherEggs()
+        {
+            return _eggsProduced;
         }
     }
 }

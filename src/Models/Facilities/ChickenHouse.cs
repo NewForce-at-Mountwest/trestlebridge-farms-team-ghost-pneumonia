@@ -2,19 +2,21 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Models.Animals;
 
 
 namespace Trestlebridge.Models.Facilities {
     //Implements the Facility interface, and this is a facility with a type of IGrazing
-    public class ChickenHouse : IFacility<IGrazing>
+    //Dylan: Changed IGrazing to Chicken, as Chicken doesn't use the IGrazing interface
+    public class ChickenHouse : IFacility<Chicken>
     {
         //Stores an int for how many resources this facility can hold (15 grazing animals in this case)
         private int _capacity = 15;
         //Creates a unique id for this Chicken House
         private Guid _id = Guid.NewGuid();
 
-        //A list of grazing animals stored in this Chicken House
-        private List<IGrazing> _animals = new List<IGrazing>();
+        //A list of grazing animals stored in this grazing field
+        private List<Chicken> _animals = new List<Chicken>();
 
         //Returns the field capacity. Allows _capacity to stay private but still use that number elsewhere
         public double Capacity {
@@ -23,18 +25,25 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        //Added by Dylan so that I can count how many animals are in each facility
+        public int AnimalCount {
+            get {
+                return _animals.Count;
+            }
+        }
+
         //Adds a single grazing animal to the field
-        public void AddResource (IGrazing animal)
+        public void AddResource (Chicken animal)
         {
             // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.Add(animal);
         }
 
         //Adds a whole list of grazing animals to the field
-        public void AddResource (List<IGrazing> animals) 
+        public void AddResource (List<Chicken> animals) 
         {
             // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.AddRange(animals);
         }
 
         //Outputs a large string of all resources stored in this chicken house
