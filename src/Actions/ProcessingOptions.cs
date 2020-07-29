@@ -23,28 +23,33 @@ namespace Trestlebridge.Actions
             Console.Write("> ");
             string input = Console.ReadLine();
 
-
+          //added timer and a console writeline to test if the options menu works the way it's supposed to
             if (input == "1")
             {
-            Console.WriteLine("Seed Harvestor");
+                Console.WriteLine("Seed Harvestor");
+                Thread.Sleep(2000);
             }
             else if (input == "2")
             {
-                 Console.WriteLine("Meat Processor");
+                Console.WriteLine("Meat Processor");
+                Thread.Sleep(2000);
 
             }
             else if (input == "3")
             {
-             Console.WriteLine("Egg Gatherer");
+                Console.WriteLine("Egg Gatherer");
+                Thread.Sleep(2000);
 
             }
             else if (input == "4")
             {
                 Console.WriteLine("Composter");
+                Thread.Sleep(2000);
             }
             else if (input == "5")
             {
-              Console.WriteLine("Feather Harvester");
+                Console.WriteLine("Feather Harvester");
+                Thread.Sleep(2000);
 
             }
             else

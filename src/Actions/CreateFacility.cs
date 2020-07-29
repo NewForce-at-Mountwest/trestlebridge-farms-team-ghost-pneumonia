@@ -22,38 +22,40 @@ namespace Trestlebridge.Actions
             Console.Write("> ");
             string input = Console.ReadLine();
 
-          //menu for creating facilities
-          //changed it from the code that was given 
-          //now it looks and functions just like the main menu
+            //menu for creating facilities
+            //changed it from the code that was given 
+            //now it looks and functions just like the main menu
+            // changed the confirmation message show which facility you have added
+            // added a timer on the confirmation message so you can see the message
             if (input == "1")
             {
                 farm.AddGrazingField(new GrazingField());
-                Console.WriteLine("Your Facility has been added");
-
+                Console.WriteLine("Grazing Field has been added");
+                Thread.Sleep(2000);
             }
             else if (input == "2")
             {
                 farm.AddPlowedField(new PlowedField());
-                Console.WriteLine("Your Facility has been added");
-
+                Console.WriteLine("Plowed Field has been added");
+                Thread.Sleep(2000);
             }
             else if (input == "3")
             {
                 farm.AddNaturalField(new NaturalField());
-                Console.WriteLine("Your Facility has been added");
-
+                Console.WriteLine("Natural Field has been added");
+                Thread.Sleep(2000);
             }
             else if (input == "4")
             {
                 farm.AddChickenHouse(new ChickenHouse());
-                Console.WriteLine("Your Facility has been added");
-
+                Console.WriteLine("Chicken House has been added");
+                Thread.Sleep(2000);
             }
             else if (input == "5")
             {
                 farm.AddDuckHouse(new DuckHouse());
-                Console.WriteLine("Your Facility has been added");
-
+                Console.WriteLine("Duck House has been added");
+                Thread.Sleep(2000);
             }
             //error handling
             else
