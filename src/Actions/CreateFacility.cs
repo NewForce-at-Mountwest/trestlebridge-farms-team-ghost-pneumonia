@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Facilities;
@@ -55,6 +56,8 @@ namespace Trestlebridge.Actions
             else
             {
                 Console.WriteLine($"Invalid input: {input}");
+                Console.WriteLine("Returning to the main menu");
+                Thread.Sleep(2000);
             }
 
         }

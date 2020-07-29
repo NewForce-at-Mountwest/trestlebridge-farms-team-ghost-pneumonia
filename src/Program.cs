@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using Trestlebridge.Actions;
 using Trestlebridge.Models;
 
@@ -49,7 +50,6 @@ namespace Trestlebridge
                 Console.WriteLine("4. Display Farm Status");
                 Console.WriteLine("5. Processing Options");
                 Console.WriteLine("6. Exit");
-                Console.WriteLine();
 
                 Console.WriteLine("Choose a FARMS option");
                 Console.Write("> ");
@@ -87,6 +87,7 @@ namespace Trestlebridge
                 else
                 {
                     Console.WriteLine($"Invalid option: {option}");
+                    Thread.Sleep(2000);
                 }
             }
         }
