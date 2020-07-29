@@ -8,23 +8,22 @@ using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions
 {
-    public class ChooseNaturalField
+    public class ChoosePlowedField
     {
-        public static void CollectInput(Farm farm, ICompostProducingPlant plant)
+        public static void CollectInput(Farm farm, ISeedProducing plant)
         {
             Utils.Clear();
 
-            List<NaturalField> openNaturalFields = farm.NaturalFields.Where(field => field.PlantsCount() < field.Capacity).ToList();
+            List<PlowedField> openPlowedFields = farm.PlowedFields.Where(field => field.PlantsCount() < field.Capacity).ToList();
 
-
-            if (openNaturalFields.Count == 0)
+            if (farm.PlowedFields.Count == 0)
             {
                 Console.WriteLine("0. Return to main menu");
             }
 
-            for (int i = 0; i < openNaturalFields.Count; i++)
+            for (int i = 0; i < openPlowedFields.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Natural Field  (Plants: {openNaturalFields[i].PlantsCount()})");
+                Console.WriteLine($"{i + 1}. Plowed Field (Plants: {openPlowedFields[i].PlantsCount()})");
             }
 
 
@@ -37,12 +36,11 @@ namespace Trestlebridge.Actions
             try
             {
                 int choice = Int32.Parse(Console.ReadLine());
-                
-                openNaturalFields[choice - 1].AddResource(plant);
+                openPlowedFields[choice - 1].AddResource(plant);
             }
             catch (Exception)
             {
-                Console.WriteLine("Incorrect input.");
+                Console.WriteLine("Incorrect input.  Returning to main menu!");
                 Thread.Sleep(3000);
             }
 

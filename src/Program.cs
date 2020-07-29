@@ -66,7 +66,7 @@ namespace Trestlebridge
                  else if (option == "3")
                 {
                     DisplayBanner();
-                    //TODO:  Implement PurchaseSeed after it is built
+                    PurchaseSeed.CollectInput(Trestlebridge);
                 }
                 else if (option == "4")
                 {

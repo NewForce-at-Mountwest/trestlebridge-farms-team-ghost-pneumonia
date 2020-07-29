@@ -3,7 +3,7 @@ using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Plants
 {
-    public class Sunflower : IResource, ISeedProducing, ICompostProducing
+    public class Sunflower : IResource, ISeedProducing, ICompostProducingPlant
     {
         public string Type { get; } = "Sesame";
 
