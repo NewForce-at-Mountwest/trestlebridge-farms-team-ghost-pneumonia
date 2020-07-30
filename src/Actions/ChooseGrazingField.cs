@@ -28,7 +28,32 @@ namespace Trestlebridge.Actions
                 if(i == 0){
                     Console.WriteLine("0. Return to main menu");
                 }
-                Console.WriteLine($"{i + 1}. Grazing Field ({availableFields[i].AnimalCount} animals, out of {availableFields[i].Capacity})");
+
+                var fieldsAndTheirAnimalCounts = availableFields[i].AnimalBreakdown;
+
+                string animalCountString = "";
+
+                for (int j = 0; j < fieldsAndTheirAnimalCounts.Count; j++){
+                    if(j == 0){
+                        animalCountString += "(";
+                    }
+                    foreach (KeyValuePair<string, int> animalKeyValuePair in fieldsAndTheirAnimalCounts[j]){
+                        if (animalKeyValuePair.Value > 1){
+                            animalCountString += $"{animalKeyValuePair.Value} {animalKeyValuePair.Key}s";
+                        }
+                        else{
+                            animalCountString += $"{animalKeyValuePair.Value} {animalKeyValuePair.Key}";
+                        }
+                    };
+                    if (j != fieldsAndTheirAnimalCounts.Count - 1){
+                        animalCountString += ", ";
+                    }
+                    else{
+                        animalCountString += ")";
+                    }
+                }
+
+                Console.WriteLine($"{i + 1}. Grazing Field {animalCountString}");
             }
 
             Console.WriteLine();
