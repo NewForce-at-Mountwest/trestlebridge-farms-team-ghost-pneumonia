@@ -67,9 +67,14 @@ namespace Trestlebridge.Models.Facilities {
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
             //Adds to our output string
+            // if the facility only has 1 animal you wont see animals
+            if(_animals.Count == 1){
+                output.Append($"Grazing field {shortId} has {this._animals.Count} animal\n");
+                 this._animals.ForEach(a => output.Append($"   {a}\n"));
+            }else{
             output.Append($"Grazing field {shortId} has {this._animals.Count} animals\n");
             //Calls the ToString() method for every animal in this grazing field and adds it to our output string
-            this._animals.ForEach(a => output.Append($"   {a}\n"));
+            this._animals.ForEach(a => output.Append($"   {a}\n"));}
 
             //Returns our output string
             return output.ToString();
