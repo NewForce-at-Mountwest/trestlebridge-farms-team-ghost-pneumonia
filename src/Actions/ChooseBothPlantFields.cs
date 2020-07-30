@@ -23,12 +23,12 @@ namespace Trestlebridge.Actions
             Console.WriteLine("0. Return to main menu");
             for (int i = 0; i < openPlowedFields.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Plowed Field  (Plants: {openPlowedFields[i].PlantsCount()})");
+                Console.WriteLine($"{i + 1}. Plowed Field  (Plants: {openPlowedFields[i].PlantsCount()} Sesame: {openPlowedFields[i].SesameCount()} Sunflower: {openPlowedFields[i].SunflowerCount()})");
             }
 
             for (int i = openPlowedFields.Count; i < openPlowedFields.Count + openNaturalFields.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Natural Field  (Plants: {openNaturalFields[i - openPlowedFields.Count].PlantsCount()})");
+                Console.WriteLine($"{i + 1}. Natural Field  (Plants: {openNaturalFields[i - openPlowedFields.Count].PlantsCount()} Sunflower: {openNaturalFields[i - openPlowedFields.Count].SunflowerCount()} Wildflower: {openNaturalFields[i - openPlowedFields.Count].WildflowerCount()})");
             }
 
 

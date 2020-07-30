@@ -21,7 +21,7 @@ namespace Trestlebridge.Actions
             Console.WriteLine("0. Return to main menu");
             for (int i = 0; i < openNaturalFields.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Natural Field  (Plants: {openNaturalFields[i].PlantsCount()})");
+                Console.WriteLine($"{i + 1}. Natural Field  (Plants: {openNaturalFields[i].PlantsCount()} Sunflower: {openNaturalFields[i].SunflowerCount()} Wildflower: {openNaturalFields[i].WildflowerCount()}) ");
             }
 
 

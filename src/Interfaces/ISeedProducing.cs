@@ -5,5 +5,8 @@ namespace Trestlebridge.Interfaces
     {
         //Returns a double - how many seeds this resource produces
         double Harvest ();
+
+        string Type {get;}
+
     }
 }

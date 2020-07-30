@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
+using System.Linq;
 
 namespace Trestlebridge.Models.Facilities {
     //Implements the Facility interface, and this is a facility with a type of IGrazing
@@ -13,13 +14,28 @@ namespace Trestlebridge.Models.Facilities {
         private Guid _id = Guid.NewGuid();
 
         //A list of plants stored in this facility
-        private List<ISeedProducing> _plants = new List<ISeedProducing>();
+        public List<ISeedProducing> _plants = new List<ISeedProducing>();
+
+       
+
            public double Capacity {
             get {
                 return _capacity;
             }
         }
 
+
+    public int SesameCount(){
+        int count = 0;
+        count = _plants.Where(plant => plant.Type == "Sesame").Count();
+        return count;
+    }
+
+       public int SunflowerCount(){
+        int count = 0;
+        count = _plants.Where(plant => plant.Type == "Sunflower").Count();
+        return count;
+    }
         public int PlantsCount(){
             return _plants.Count;
         }
