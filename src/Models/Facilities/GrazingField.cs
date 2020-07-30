@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using System.Linq;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 
@@ -28,6 +29,18 @@ namespace Trestlebridge.Models.Facilities {
         public int AnimalCount {
             get {
                 return _animals.Count;
+            }
+        }
+
+        public List<Dictionary<string, int>> AnimalBreakdown {
+            get {
+                List<IResource> animalResources = _animals.Select(animal => (IResource)animal).ToList();
+                
+                return animalResources.GroupBy(
+                singleAnimal => singleAnimal.Type,
+                (key, animalList) => new Dictionary<string, int>() {
+                    {key, animalList.ToList().Count()}
+                }).ToList();
             }
         }
 
@@ -60,8 +73,6 @@ namespace Trestlebridge.Models.Facilities {
 
             //Returns our output string
             return output.ToString();
-
-            
         }
     }
 }
