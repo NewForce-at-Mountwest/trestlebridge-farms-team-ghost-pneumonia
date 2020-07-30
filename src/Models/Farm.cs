@@ -7,7 +7,8 @@ using Trestlebridge.Models.Facilities;
 namespace Trestlebridge.Models
 {
     public class Farm
-    {
+    {   
+        // creates a new instance of each type of facility 
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
         public List<PlowedField> PlowedFields  {get;} = new List<PlowedField>();
 
@@ -44,7 +45,7 @@ namespace Trestlebridge.Models
             //Creates a new string
             StringBuilder report = new StringBuilder();
 
-            //Goes through every GrazingField in the part and calls its ToString() function, adding it to the report string
+            //Goes through every Facility in the part and calls its ToString() function, adding it to the report string
             GrazingFields.ForEach(gf => report.Append(gf));
             PlowedFields.ForEach(gf => report.Append(gf));
             NaturalFields.ForEach(gf => report.Append(gf));
@@ -55,7 +56,7 @@ namespace Trestlebridge.Models
             return report.ToString();
         }
 
-        
+        //Methods for adding each facility
         public void AddPlowedField (PlowedField plowedField)
         {
             PlowedFields.Add(plowedField);

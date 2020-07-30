@@ -45,9 +45,18 @@ namespace Trestlebridge.Models.Facilities
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
             //Adds to our output string
-            output.Append($"Natural field {shortId} has {this._plants.Count} plants\n");
-            //Calls the ToString() method for every animal in this grazing field and adds it to our output string
-            this._plants.ForEach(a => output.Append($"   {a}\n"));
+            if (_plants.Count == 1)
+            {
+                output.Append($"Natural field {shortId} has {this._plants.Count} plant\n");
+                this._plants.ForEach(a => output.Append($"   {a}\n"));
+            }
+            else
+            {
+                output.Append($"Natural field {shortId} has {this._plants.Count} plants\n");
+                //Calls the ToString() method for every plant in this natural field and adds it to our output string
+                this._plants.ForEach(a => output.Append($"   {a}\n"));
+            }
+
 
             //Returns our output string
             return output.ToString();
