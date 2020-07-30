@@ -27,6 +27,7 @@ namespace Trestlebridge.Actions
             //now it looks and functions just like the main menu
             // changed the confirmation message show which facility you have added
             // added a timer on the confirmation message so you can see the message
+         
             if (input == "1")
             {
                 farm.AddGrazingField(new GrazingField());

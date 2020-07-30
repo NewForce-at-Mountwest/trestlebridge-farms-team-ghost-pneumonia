@@ -10,7 +10,7 @@ namespace Trestlebridge
     {
 
         // method that displays the danner when the program runs
-        static void DisplayBanner()
+       public static void DisplayBanner()
         {
             Utils.Clear();
             Console.WriteLine();
@@ -98,5 +98,7 @@ namespace Trestlebridge
                 }
             }
         }
+
+     
     }
 }
