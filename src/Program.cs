@@ -36,7 +36,6 @@ namespace Trestlebridge
             //instance of a new farm type
             Farm Trestlebridge = new Farm();
 
-
             //main menu
             while (true)
             {
@@ -63,6 +62,11 @@ namespace Trestlebridge
                 {
                     DisplayBanner();
                     PurchaseStock.CollectInput(Trestlebridge);
+                }
+                 else if (option == "3")
+                {
+                    DisplayBanner();
+                    PurchaseSeed.CollectInput(Trestlebridge);
                 }
                 else if (option == "4")
                 {
