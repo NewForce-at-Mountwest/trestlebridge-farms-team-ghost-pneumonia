@@ -3,34 +3,41 @@ using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 
-namespace Trestlebridge.Models.Facilities {
+namespace Trestlebridge.Models.Facilities
+{
     //Implements the Facility interface, and this is a facility with a type of IGrazing
-    public class NaturalField : IFacility<ISeedProducing>
+    public class NaturalField : IFacility<ICompostProducingPlant>
     {
-             //Stores an int for how many resources this facility can hold (65 PLANTS)
+        //Stores an int for how many resources this facility can hold (65 PLANTS)
         private int _capacity = 60;
         //Creates a unique id 
         private Guid _id = Guid.NewGuid();
 
         //A list of plants stored in this facility
-        private List<ISeedProducing> _plants = new List<ISeedProducing>();
-           public double Capacity {
-            get {
+        private List<ICompostProducingPlant> _plants = new List<ICompostProducingPlant>();
+        public double Capacity
+        {
+            get
+            {
                 return _capacity;
             }
         }
 
-        public void AddResource(ISeedProducing resource)
+        public int PlantsCount()
         {
-            throw new NotImplementedException();
+            return _plants.Count;
+        }
+        public void AddResource(ICompostProducingPlant plant)
+        {
+            _plants.Add(plant);
         }
 
-        public void AddResource(List<ISeedProducing> resources)
+        public void AddResource(List<ICompostProducingPlant> plants)
         {
-            throw new NotImplementedException();
+            _plants.AddRange(plants);
         }
 
-         public override string ToString()
+        public override string ToString()
         {
             //Creates a new string to store the upcoming info
             StringBuilder output = new StringBuilder();
@@ -45,7 +52,7 @@ namespace Trestlebridge.Models.Facilities {
             //Returns our output string
             return output.ToString();
 
-            
+
         }
     }
 }
