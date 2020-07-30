@@ -55,6 +55,7 @@ namespace Trestlebridge.Actions
                     Console.Write("> ");
                 }
             }
+            Console.Write("");
         }
     }
 }
