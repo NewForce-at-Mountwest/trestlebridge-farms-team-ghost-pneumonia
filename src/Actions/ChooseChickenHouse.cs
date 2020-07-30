@@ -28,7 +28,11 @@ namespace Trestlebridge.Actions
                 {
                     Console.WriteLine("0. Return to main menu");
                 }
-                Console.WriteLine($"{i + 1}. Chicken House ({availableHouses[i].AnimalCount} animals, out of {availableHouses[i].Capacity})");
+                string chickenString = "chicken";
+                if (availableHouses[i].AnimalCount != 1){
+                    chickenString += "s";
+                }
+                Console.WriteLine($"{i + 1}. Chicken House ({availableHouses[i].AnimalCount} {chickenString})");
             }
 
             Console.WriteLine();
