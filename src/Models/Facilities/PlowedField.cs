@@ -20,14 +20,17 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public void AddResource(ISeedProducing resource)
+        public int PlantsCount(){
+            return _plants.Count;
+        }
+        public void AddResource(ISeedProducing plant)
         {
-            throw new NotImplementedException();
+             _plants.Add(plant);
         }
 
-        public void AddResource(List<ISeedProducing> resources)
+        public void AddResource(List<ISeedProducing> plants)
         {
-            throw new NotImplementedException();
+             _plants.AddRange(plants);
         }
 
          public override string ToString()
