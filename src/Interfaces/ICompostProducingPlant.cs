@@ -5,5 +5,7 @@ namespace Trestlebridge.Interfaces
     {
         //Returns a double - how much compost this plant produces
         double HarvestCompost();
+
+        string Type {get;}
     }
 }

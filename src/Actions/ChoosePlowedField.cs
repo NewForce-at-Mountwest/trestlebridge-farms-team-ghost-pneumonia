@@ -5,6 +5,7 @@ using System.Threading;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Facilities;
+using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Actions
 {
@@ -16,14 +17,15 @@ namespace Trestlebridge.Actions
 
 
             List<PlowedField> openPlowedFields = farm.PlowedFields.Where(field => field.PlantsCount() < field.Capacity).ToList();
-
+            
          
                 Console.WriteLine("0. Return to Main Menu");
            
 
             for (int i = 0; i < openPlowedFields.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Plowed Field (Plants: {openPlowedFields[i].PlantsCount()})");
+                Console.WriteLine($"{i + 1}. Plowed Field (Total Plants: {openPlowedFields[i].PlantsCount()} Total Sesame: {openPlowedFields[i].SesameCount()} Total Sunflower: {openPlowedFields[i].SunflowerCount()}) ");
+                
             }
 
 

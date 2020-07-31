@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
+using System.Linq;
 
 namespace Trestlebridge.Models.Facilities
 {
@@ -26,6 +27,34 @@ namespace Trestlebridge.Models.Facilities
         public int PlantsCount()
         {
             return _plants.Count;
+        }
+
+        public int SunflowerCount()
+        {
+            int count = 0;
+            count = _plants.Where(plant => plant.Type == "Sunflower").Count();
+            return count;
+        }
+
+        public int WildflowerCount()
+        {
+            int count = 0;
+            count = _plants.Where(plant => plant.Type == "Wildflower").Count();
+            return count;
+        }
+
+        public List<Dictionary<string, int>> PlantGroups
+        {
+            get
+            {
+                List<IResource> PlantList = _plants.Select(plant => (IResource)plant).ToList();
+
+                return PlantList.GroupBy(
+                plant => plant.Type,
+                (key, plantList) => new Dictionary<string, int>() {
+                    {key, plantList.ToList().Count()}
+                }).ToList();
+            }
         }
         public void AddResource(ICompostProducingPlant plant)
         {
