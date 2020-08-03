@@ -50,6 +50,7 @@ namespace Trestlebridge.Models.Facilities
             _plants.AddRange(plants);
         }
 
+        //An example of abstraction.  Two string method is this complex piece of code that another developer doesn't need to understand to use.
         public override string ToString()
         {
             //Creates a new string to store the upcoming info
